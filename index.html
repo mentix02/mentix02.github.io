@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mentix02's hackerspace</title>
+</head>
+<body>
+  <h1>mentix02's hackerspace</h1>
+  <div id="details"></div>
+  <script>
+    const URL = 'https://api.github.com/users/mentix02';
+    const detailsEl = document.getElementById('details');
+
+    async function fetchGitHubDetails() {
+      const resp = await fetch(URL);
+      return await resp.json();
+    }
+
+    fetchGitHubDetails().then(data => {
+      const img = document.createElement('img');
+      img.src = data.avatar_url;
+      img.alt = 'mentix02 avatar';
+      detailsEl.appendChild(img);
+    });
+  </script>
+</body>
+</html>
